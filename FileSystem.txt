@@ -1,0 +1,48 @@
+========== FILE SYSTEM CREATION ==========  
+
+1. Add 10GB to logical volume
+For EXT3, EXT4  and XFS:
+# lvcreate -n <lvname> -L 10G <vgname>
+-L // will specify size of the volume group
+-n // will specify the name of the logical volume
+vgname // is the name of the volume group where the logical volume will be created
+
+2. Format the logical volume based on the preferred filesystem type:
+# mkfs.ext3 /dev/vgname/lvname
+# mkfs.ext4 /dev/vgname/lvname
+# mkfs.xfs /dev/vgname/lvname
+
+For EXT3 and EXT4,
+3. Tune the filesystem:
+# tune2fs -i0 -c0 -e remount-ro <fullpathoflogicalvolume>
+
+4. Create entry in /etc/fstab
+/dev/vgname/lvname  /mount/point  ext3  errors=remount-ro,data_err=abort 0 0
+/dev/vgname/lvname  /mount/point  ext4  errors=remount-ro,data_err=abort 0 0
+/dev/vgname/lvname  /mount/point  xfs  defaults,inode64 0 0
+
+* Once you save this , there will be an error due to mount point not yet created
+
+5. Create mount point
+# mkdir -p /mount/point
+
+6. Mount the filesystem
+# mount /mount/point
+
+7. Verify mounted fs
+# df -h /mount/point 
+
+========== FILE SYSTEM REMOVAL ==========
+1. Un-mount fs
+# umount /mount/point
+
+2. Remove entry in fstab
+
+3. Remove the mountpoint
+# rmdir /mount/point
+
+4. Remove the logical volume
+# lvremove /dev/vgname/lvname 
+
+
+========== FILE SYSTEM EXTENSION ==========
