@@ -2,7 +2,7 @@
 // Disk
 Basic Commands to check on disk usage/space
 
-df -h 
+df - report file system of disk space usage
 -> shows all disk space usage 
 -> you can specify a filesystem mount point/device disk usage by specifying it after df -h <>
 -> (-h) human-readable format but there are many other options using df --help
@@ -14,4 +14,6 @@ tmpfs           492M     0  492M   0% /sys/fs/cgroup
 /dev/xvda1      8.0G  1.3G  6.8G  16% /
 tmpfs            99M     0   99M   0% /run/user/0
 tmpfs            99M     0   99M   0% /run/user/1000
+
+du
 
