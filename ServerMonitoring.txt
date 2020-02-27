@@ -1,4 +1,4 @@
-Sources: 
+﻿Sources: 
 Most definitions are copied from man pages
 Most analysis are copied from other mentors
 
@@ -13,9 +13,35 @@ sar -P ALL
 >-P ALL is given, the sar command reports statistics for  each  individual  processor  and global statistics among all processors.
 
 Analysis:
-•	CPU %idle is high, system’s CPU is almost idle.
-•	CPU %user stays at 70 and above, system’s CPU is being utilized by the application users; there might be CPU degradation.
-•	CPU %system continues to stay high around 70 and above, system’s CPU is being utilized by the server itself; there might be some OS-related processes that might cause CPU degradation.
-•	CPU %iowait continues to stay high around 50 and above, the CPU is waiting for the I/O operation to complete before it returns to CPU for another processing. There might be an issue in the storage side.
+- %idle is high, system’s CPU is almost idle.
+- %user >=70 , system’s CPU is being utilized by the application users; there might be CPU degradation.
+- %system >=70 , system’s CPU is being utilized by the server itself; there might be some OS-related processes that might cause CPU degradation.
+- %iowait  >= 50 , the CPU is waiting for the I/O operation to complete before it returns to CPU for another processing. There might be an issue in the storage side.
+
+============= MEMORY USAGE ==============
+>sar -r
+Analaysis:
+- %memused is >= 90% = normal, free or wasted memory is beeing allocated for frequent data being used
+- %commit is >= 100% = system is overcommitiong memory and is memory starved. The system might often log Out of memory (OOM) killer in the /var/log/messages. Check swap statistiscs
+
+============= SWAP USAGE ==============
+>sar -S
+Analysis:
+- %swpused is high = swapping and memory shortage
+
+============= DISK USAGE ==============
+>sar -d -p 
+Analysis:
+- %util continue to stay high, this indicates that the device involved in the system has lots of I/O operation requests. Needs to be checked on storage level
 
 
+============= ALERTS ==============
+OS Level:
+> dmesg
+> /var/log/messages
+
+VMware Servers:
+> Vcenter alarms
+
+Physical Servers:
+> iLo
