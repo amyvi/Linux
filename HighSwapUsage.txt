@@ -1,0 +1,24 @@
+Linux has two forms of swap space: the swap partition and the swap file. The swap partition is an independent section of the hard disk used solely for swapping; no other files can reside there. The swap file is a special file in the filesystem that resides amongst your system and data files.
+Source: https://www.linux.com/news/all-about-linux-swap-space/
+
+
+How to check swap total size of memory and swap?
+# free -m   
+> under used column
+
+How to list all processes consuming swap space?
+# grep Swap /proc/[1-9]*/smaps
+
+Check swappiness value:
+# cat /proc/sys/vm/swappiness
+
+To temporary alter it until the next reboot:
+# echo 50 > /proc/sys/vm/swappiness
+
+To alter permanently:
+
+Update swappiness:
+# vi /etc/sysctl.conf
+# sysctl -w vm.swappiness=5
+
+higher values lead to more pages being swapped, and lower values lead to more applications being kept in memory, even if they are idle. 
