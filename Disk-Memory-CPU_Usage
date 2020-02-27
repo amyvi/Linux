@@ -14,6 +14,7 @@ tmpfs           492M     0  492M   0% /sys/fs/cgroup
 /dev/xvda1      8.0G  1.3G  6.8G  16% /
 tmpfs            99M     0   99M   0% /run/user/0
 tmpfs            99M     0   99M   0% /run/user/1000
+<<<<<<< HEAD
 
 du - estimate file space usage
 -> displays the total amount of disk usage a filesystem is consuming
@@ -24,5 +25,10 @@ Commonly used options:
 2. du -sh * | sort -run
 
 For hidden files:
+du -hs * .[^.]*
 
+=======
+
+du
+>>>>>>> 9662e30da3c66dc8b723bebe3c1f5f81c839e7dc
 
