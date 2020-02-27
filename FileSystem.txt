@@ -46,3 +46,18 @@ For EXT3 and EXT4,
 
 
 ========== FILE SYSTEM EXTENSION ==========
+1. Check status of lv   
+# lvdisplay /dev/vgname/lvname
+
+2. Add 100G to current fs
+#lvextend -L +100G -r /dev/vgname/lvname
+
+========== FILE SYSTEM REDUCTION ==========
+This can be done ONLINE for FS type EXT3.
+This can be done OFFLINE for FS type EXT4.
+This is NOT applicable/supported for FS type XFS
+
+1. Unmount fs // applicable for ext4
+2. Reduce fs
+# lvreduce -L -50G -r /dev/vgname/lvname
+3. Mount fs //applicable for ext4
