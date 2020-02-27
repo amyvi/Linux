@@ -1,34 +1,74 @@
 
-// Disk
+Source: Most definition and options are just copied from man pages.
+
+============= Disk ==================
 Basic Commands to check on disk usage/space
 
-df - report file system of disk space usage
+#df - report file system of disk space usage
 -> shows all disk space usage 
 -> you can specify a filesystem mount point/device disk usage by specifying it after df -h <>
 -> (-h) human-readable format but there are many other options using df --help
-Filesystem      Size  Used Avail Use% Mounted on
-devtmpfs        475M     0  475M   0% /dev
-tmpfs           492M     0  492M   0% /dev/shm
-tmpfs           492M  456K  492M   1% /run
-tmpfs           492M     0  492M   0% /sys/fs/cgroup
-/dev/xvda1      8.0G  1.3G  6.8G  16% /
-tmpfs            99M     0   99M   0% /run/user/0
-tmpfs            99M     0   99M   0% /run/user/1000
-<<<<<<< HEAD
 
-du - estimate file space usage
+#du - estimate file space usage
 -> displays the total amount of disk usage a filesystem is consuming
 -> you can sort it amount accordingly
 -> Useful for scenarios like filesystem houskeeping
 Commonly used options:
-1. du -sh * | grep 
-2. du -sh * | sort -run
+1. du -sh * | grep G // filter sizes with gigabytes 
+2. du -sh * | sort -n // this sorts total file usage of each file 
+3. du -hs * .[^.]* // sorting hidden files
 
-For hidden files:
-du -hs * .[^.]*
+#fdisk - manipulate disk partition table 
+-> equivalent to diskpart in windows
 
-=======
+#lsblk - list block device
+->  The  command  prints all block devices (except RAM disks) in a tree-like
+       format by default. 
+-> no mountpoint = filesystem is not mounted
+NAME    MAJ:MIN RM SIZE RO TYPE MOUNTPOINT
+xvda    202:0    0   8G  0 disk 
+└─xvda1 202:1    0   8G  0 part /
 
-du
->>>>>>> 9662e30da3c66dc8b723bebe3c1f5f81c839e7dc
+
+============= Memory ==================
+
+#free - display amount of free and used memory in the system
+
+ total  Total installed memory (MemTotal and SwapTotal in /proc/meminfo)
+
+       used   Used memory (calculated as total - free - buffers - cache)
+
+       free   Unused memory (MemFree and SwapFree in /proc/meminfo)
+
+       shared Memory used (mostly) by tmpfs (Shmem in /proc/meminfo,  available
+              on kernels 2.6.32, displayed as zero if not available)
+
+       buffers
+              Memory used by kernel buffers (Buffers in /proc/meminfo)
+
+       cache  Memory  used by the page cache and slabs (Cached and SReclaimable
+              in /proc/meminfo)
+
+       buff/cache
+              Sum of buffers and cache
+
+To display the percentage of memory utilization:
+# free | grep Mem | awk '{print "Memory Usage: " $3/$2*100"%"}'
+
+#cat /proc/meminfo
+#top - displays linux processes consuming high memory usage
+#vmstat - report virtual memory statictics
+#sar - Collect, report, or save system activity information.
+-> there are many options that you can use to create reports 
+
+
+============= CPU ==================
+#top
+To display the percentage of CPU utilization:
+#top -n 1|grep Cpu| awk '{print "CPU utilization: " $2+$4"%"}'
+# sar -u //reporting cpu utilization
+# ps -eo pcpu,pid,user,args | sort -k1 -r | head -10 // displays top 10 consumers of cpu
+ps command displays every process (-e) with a user-defined format (-o pcpu). First field is pcpu (cpu utilization). It is sorted in reverse order to display top 10 CPU eating process.
+
+
 
