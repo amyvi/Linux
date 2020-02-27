@@ -1,0 +1,28 @@
+Most common ticket requests
+
+1. Remove files older than 7 days by creating a cron job to run every 1am?
+# find /var/log/messages -type f -mtime +7 rm {} \;
+
+-type f // type files
+-mtime // modify time
++7 // older than 7 days
+-exec // what to do with the files when found
+{} // specifying all files that will be found
+\; // to end the exec command
+
+# crontab -e
+0 1 * * * find /var/log/messages -type f -mtime +7 rm {} \;
+
+2. Run a command that shows all line except any line starting with a character # in a file? and blankline
+# cat filename | grep -v ^#
+# cat filename | grep -v ^# | grep -v ^$
+-v // omits everything that has been specified
+^ // (caret)starts with
+
+====== User Admin ======
+1. Which 2 files contain default values when creating a user with useradd command?
+- /etc/default/useradd
+- /etc/login.defs
+
+2. Give sudo access without password
+# user ALL=(ALL) nopassword:ALL ///etc/sudoers
