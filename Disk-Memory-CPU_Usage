@@ -15,5 +15,14 @@ tmpfs           492M     0  492M   0% /sys/fs/cgroup
 tmpfs            99M     0   99M   0% /run/user/0
 tmpfs            99M     0   99M   0% /run/user/1000
 
-du
+du - estimate file space usage
+-> displays the total amount of disk usage a filesystem is consuming
+-> you can sort it amount accordingly
+-> Useful for scenarios like filesystem houskeeping
+Commonly used options:
+1. du -sh * | grep 
+2. du -sh * | sort -run
+
+For hidden files:
+
 
