@@ -1,0 +1,21 @@
+Sources: 
+Most definitions are copied from man pages
+Most analysis are copied from other mentors
+
+============= CPU USAGE ==============
+sar -u 
+> cpu usage of current time
+
+sar -u 3 4
+> cpu usage every 3 seconds for 4 times
+
+sar -P ALL
+>-P ALL is given, the sar command reports statistics for  each  individual  processor  and global statistics among all processors.
+
+Analysis:
+•	CPU %idle is high, system’s CPU is almost idle.
+•	CPU %user stays at 70 and above, system’s CPU is being utilized by the application users; there might be CPU degradation.
+•	CPU %system continues to stay high around 70 and above, system’s CPU is being utilized by the server itself; there might be some OS-related processes that might cause CPU degradation.
+•	CPU %iowait continues to stay high around 50 and above, the CPU is waiting for the I/O operation to complete before it returns to CPU for another processing. There might be an issue in the storage side.
+
+
