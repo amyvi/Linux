@@ -14,6 +14,6 @@ tmpfs           492M     0  492M   0% /sys/fs/cgroup
 /dev/xvda1      8.0G  1.3G  6.8G  16% /
 tmpfs            99M     0   99M   0% /run/user/0
 tmpfs            99M     0   99M   0% /run/user/1000
-
+du -hs * .[^.]*
 du
 
