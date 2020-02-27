@@ -34,23 +34,15 @@ xvda    202:0    0   8G  0 disk
 
 #free - display amount of free and used memory in the system
 
- total  Total installed memory (MemTotal and SwapTotal in /proc/meminfo)
-
-       used   Used memory (calculated as total - free - buffers - cache)
-
-       free   Unused memory (MemFree and SwapFree in /proc/meminfo)
-
-       shared Memory used (mostly) by tmpfs (Shmem in /proc/meminfo,  available
+total - Total installed memory (MemTotal and SwapTotal in /proc/meminfo)
+used  - Used memory (calculated as total - free - buffers - cache)
+free  - Unused memory (MemFree and SwapFree in /proc/meminfo)
+shared - Memory used (mostly) by tmpfs (Shmem in /proc/meminfo,  available
               on kernels 2.6.32, displayed as zero if not available)
-
-       buffers
-              Memory used by kernel buffers (Buffers in /proc/meminfo)
-
-       cache  Memory  used by the page cache and slabs (Cached and SReclaimable
+buffers - Memory used by kernel buffers (Buffers in /proc/meminfo)
+cache - Memory  used by the page cache and slabs (Cached and SReclaimable
               in /proc/meminfo)
-
-       buff/cache
-              Sum of buffers and cache
+buff/cache - Sum of buffers and cache
 
 To display the percentage of memory utilization:
 # free | grep Mem | awk '{print "Memory Usage: " $3/$2*100"%"}'
@@ -69,6 +61,14 @@ To display the percentage of CPU utilization:
 # sar -u //reporting cpu utilization
 # ps -eo pcpu,pid,user,args | sort -k1 -r | head -10 // displays top 10 consumers of cpu
 ps command displays every process (-e) with a user-defined format (-o pcpu). First field is pcpu (cpu utilization). It is sorted in reverse order to display top 10 CPU eating process.
-
+# mpstat
+# iostat
+The iostat command generates three types of reports, the CPU Utilization report, the Device Utilization report and the Network Filesystem report. This utility display system’s average CPU utilization since the last reboot.
+%user -> Show the percentage of CPU utilization that occurred while executing at the user level (application).
+%nice -> Show the percentage of CPU utilization that occurred while executing at the user level with nice priority.
+%system -> Show the percentage of CPU utilization that occurred while executing at the system level (kernel).
+%iowait -> Show the percentage of time that the CPU or CPUs were idle during which the system had an outstanding disk I/O request.
+%steal -> Show the percentage of time spent in involuntary wait by the virtual CPU or CPUs while the hypervisor was servicing another virtual processor.
+%idle -> Show the percentage of time that the CPU or CPUs were idle and the system did not have an outstanding disk I/O request.
 
 
