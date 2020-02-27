@@ -5,3 +5,4 @@ Source:
 - man pages
 - internet
 - knowledge transfer from other mentors/colleagues/seniors
+- personal experience
