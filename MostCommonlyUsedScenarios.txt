@@ -64,6 +64,10 @@ command: cut -d: -f1 /etc/passwd > names
 #shutdown -r 22:00
 #shutdown -r now
 
+12. Find file with certain permission
+# find /var/log -perm 755 
+# find /var/log -perm 755 -ls //to list the file with attributes
+
 ====== User Admin ======
 1. Which 2 files contain default values when creating a user with useradd command?
 - /etc/default/useradd

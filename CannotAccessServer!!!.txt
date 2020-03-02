@@ -1,0 +1,13 @@
+Important details to know:
+1. Source
+2. Destination
+3. Protocol being used to access the Source to Destination
+
+Initial troubleshooting:
+1. Check if you are able to access the source server
+>ssh
+>ping by IP/DNS
+if pingable via IP but not through hostname - check /etc/hosts, etc/resolv.conf, etc/nsswitch.conf
+if NOT pingable - 
+2. Check connection to the destination
+3. Isolate the issue if it is for a specific device/ many user
