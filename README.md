@@ -1,8 +1,8 @@
 # Linux
-Files uploaded here are personal notes for Linux System Administrators
+Files uploaded here are based on personal notes for Linux System Administration
 
 Source:
 - man pages
-- internet
+- internet, google :)
 - knowledge transfer from other mentors/colleagues
 - personal experience
