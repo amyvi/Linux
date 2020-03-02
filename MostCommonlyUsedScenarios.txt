@@ -25,6 +25,45 @@ dmesg - kernel messages
 /var/log/messages - history of logs
 anaconda.log  - os installation
 
+4. Checking limit value of open files
+# cat /proc/sys/fs/file-max
+Edit:
+echo fs.file-max=<specifiednumber> >> /etc/sysctl.conf
+To append:
+sysctl -p
+
+5. Kernel parameters
+sysctl -a
+
+6. Boot time parameters
+#/proc/cmdline
+Modify here:
+/boot/grub2/grub.cfg
+
+7. Check process id
+pidof <process>
+ps -ef | grep <process>
+
+8. Check open files
+#lsof -u <user>
+#lsof -c <command>
+#lsof -i <:port>
+
+9. Extract all users to a file.
+location: /etc/passwd   
+command: cut -d: -f1 /etc/passwd > names
+-d: // delimeter to <character you specify>
+-f1 // field 1 
+> //redirect
+
+10. Broadcast messages
+#wall -n "message here"
+
+11. schedule the reboot
+#shutdown -r +10
+#shutdown -r 22:00
+#shutdown -r now
+
 ====== User Admin ======
 1. Which 2 files contain default values when creating a user with useradd command?
 - /etc/default/useradd
