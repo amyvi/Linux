@@ -19,6 +19,12 @@ Most common ticket requests
 -v // omits everything that has been specified
 ^ // (caret)starts with
 
+3. Where to check logs / messages?
+journalctl - last reboot logs
+dmesg - kernel messages
+/var/log/messages - history of logs
+anaconda.log  - os installation
+
 ====== User Admin ======
 1. Which 2 files contain default values when creating a user with useradd command?
 - /etc/default/useradd
@@ -26,3 +32,4 @@ Most common ticket requests
 
 2. Give sudo access without password
 # user ALL=(ALL) nopassword:ALL ///etc/sudoers
+
