@@ -1,5 +1,5 @@
 # Linux
-Files uploaded here are based on personal notes for Linux System Administration <for starters>
+Files uploaded here are based on personal notes for Linux System Administration // for starters
 
 Source:
 - man pages
