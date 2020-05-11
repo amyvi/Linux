@@ -3,7 +3,7 @@ Add user with most commonly used options
 -d // home directory
 -s // shell
 end of the line // account name
-# useradd -c "Name " -d /disk01/home/villa/ -s /usr/lib/ssh/sftp-server amyvi
+# useradd -c "Name " -d /disk01/home/name/ -s /usr/lib/ssh/sftp-server amyvi
 
 Modify details of users
 # usermod <options> userid
